@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Magnetic Single Image Movement</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #f0f2f5;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .fixed-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        .image {
+            position: absolute;
+            cursor: grab;
+            user-select: none;
+            transition: transform 0.2s ease;
+        }
+
+        .rotation-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            display: none;
+        }
+
+        .image:hover .rotation-btn {
+            display: block;
+        }
+
+        .linkContainer {
+            position: fixed;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 0;
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .linkContainer .link {
+            display: inline-block;
+            padding: 0;
+            margin: 0;
+            border: none;
+        }
+
+        .linkContainer .link img {
+            display: block;
+            width: 50px;
+            height: auto;
+        }
+
+        .image-box {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 200px;
+            height: 200px;
+            background-color: white;
+            border: 2px solid grey;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+           <!-- Magnetic Points -->
+           <div class="magnetic-point" data-x="76" data-y="81"></div>
+           <div class="magnetic-point" data-x="189" data-y="81"></div>
+           <div class="magnetic-point" data-x="301" data-y="81"></div>
+           <div class="magnetic-point" data-x="76" data-y="195"></div>
+           <div class="magnetic-point" data-x="189" data-y="195"></div>
+           <div class="magnetic-point" data-x="301" data-y="195"></div>
+           <div class="magnetic-point" data-x="76" data-y="308"></div>
+           <div class="magnetic-point" data-x="189" data-y="308"></div>
+           <div class="magnetic-point" data-x="301" data-y="308"></div>
+       </div>
+    <div class="container">
+        <div class="fixed-image">
+            <img src="./mosaicos/tab.png" style="width: 495px;">
+        </div>
+
+        <div class="image-box">
+            <img src="./ex/a9.jpg" alt="Sample Image">
+        </div>
+
+       <!-- Stack Group 1 -->
+       <div class="image group-1" style="top: 100px; left: 100px; z-index: 1;">
+        <img src="./mosaicos/br.png">
+        <button class="rotation-btn">↻</button>
+    </div>
+    <div class="image group-1" style="top: 120px; left: 110px; z-index: 2;">
+        <img src="./mosaicos/br.png">
+        <button class="rotation-btn">↻</button>
+    </div>
+    <div class="image group-1" style="top: 100px; left: 100px; z-index: 1;">
+        <img src="./mosaicos/br.png">
+        <button class="rotation-btn">↻</button>
+    </div>
+    <div class="image group-1" style="top: 120px; left: 110px; z-index: 2;">
+        <img src="./mosaicos/br.png">
+        <button class="rotation-btn">↻</button>
+    </div>
+    <div class="image group-1" style="top: 100px; left: 100px; z-index: 1;">
+        <img src="./mosaicos/br.png">
+        <button class="rotation-btn">↻</button>
+    </div>
+    <div class="image group-1" style="top: 120px; left: 110px; z-index: 2;">
+        <img src="./mosaicos/br.png">
+        <button class="rotation-btn">↻</button>
+    </div>
+    <div class="image group-1" style="top: 120px; left: 110px; z-index: 2;">
+        <img src="./mosaicos/br.png">
+        <button class="rotation-btn">↻</button>
+    </div>
+      <!-- Stack Group 2 -->
+      <div class="image group-2" style="top: 100px; left: 309px; z-index: 1;">
+        <img src="./mosaicos/vr.png">
+        <button class="rotation-btn">↻</button>
+    </div>
+    <div class="image group-2" style="top: 117px; left: 319px; z-index: 2;">
+        <img src="./mosaicos/vr.png">
+        <button class="rotation-btn">↻</button>
+    </div>
+    <div class="image group-2" style="top: 100px; left: 309px; z-index: 1;">
+        <img src="./mosaicos/vr.png">
+        <button class="rotation-btn">↻</button>
+    </div>
+    <div class="image group-2" style="top: 117px; left: 319px; z-index: 2;">
+        <img src="./mosaicos/vr.png">
+        <button class="rotation-btn">↻</button>
+    </div>
+    <div class="image group-2" style="top: 100px; left: 309px; z-index: 1;">
+        <img src="./mosaicos/vr.png">
+        <button class="rotation-btn">↻</button>
+    </div>
+    <div class="image group-2" style="top: 117px; left: 319px; z-index: 2;">
+        <img src="./mosaicos/vr.png">
+        <button class="rotation-btn">↻</button>
+    </div>
+    <div class="image group-2" style="top: 100px; left: 309px; z-index: 2;">
+        <img src="./mosaicos/vr.png">
+        <button class="rotation-btn">↻</button>
+    </div>
+            <!-- Stack Group 3 -->
+            <div class="image group-3" style="top: 281px; left: 309px; z-index: 1;">
+                <img src="./mosaicos/met.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+            <div class="image group-3" style="top: 293px; left: 319px; z-index: 2;">
+                <img src="./mosaicos/met.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+            <div class="image group-3" style="top: 281px; left: 309px; z-index: 1;">
+                <img src="./mosaicos/met.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+            <div class="image group-3" style="top: 293px; left: 319px; z-index: 2;">
+                <img src="./mosaicos/met.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+            <div class="image group-3" style="top: 281px; left: 309px; z-index: 1;">
+                <img src="./mosaicos/met.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+            <div class="image group-3" style="top: 293px; left: 319px; z-index: 2;">
+                <img src="./mosaicos/met.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+            <div class="image group-3" style="top: 281px; left: 309px; z-index: 2;">
+                <img src="./mosaicos/met.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+            <div class="image group-3" style="top: 293px; left: 319px; z-index: 2;">
+                <img src="./mosaicos/met.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+            <div class="image group-3" style="top: 281px; left: 309px; z-index: 2;">
+                <img src="./mosaicos/met.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+            <div class="image group-3" style="top: 293px; left: 319px; z-index: 2;">
+                <img src="./mosaicos/met.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+                <!-- Stack Group 4 -->
+        <div class="image group-4" style="top: 281px; left: 100px; z-index: 1;">
+            <img src="./mosaicos/diag.png">
+            <button class="rotation-btn">↻</button>
+        </div>
+        <div class="image group-4" style="top: 293px; left: 110px; z-index: 2;">
+            <img src="./mosaicos/diag.png">
+            <button class="rotation-btn">↻</button>
+        </div>
+        <div class="image group-4" style="top: 281px; left: 100px; z-index: 1;">
+            <img src="./mosaicos/diag.png">
+            <button class="rotation-btn">↻</button>
+        </div>
+        <div class="image group-4" style="top: 293px; left: 110px;  z-index: 2;">
+            <img src="./mosaicos/diag.png">
+            <button class="rotation-btn">↻</button>
+        </div>
+        <div class="image group-4" style="top: 281px; left: 100px; z-index: 1;">
+            <img src="./mosaicos/diag.png">
+            <button class="rotation-btn">↻</button>
+        </div>
+        <div class="image group-4" style="top: 293px; left: 110px; z-index: 2;">
+            <img src="./mosaicos/diag.png">
+            <button class="rotation-btn">↻</button>
+        </div>
+        <div class="image group-4" style="top: 281px; left: 100px; z-index: 2;">
+            <img src="./mosaicos/diag.png">
+            <button class="rotation-btn">↻</button>
+        </div>
+        <div class="image group-4" style="top: 293px; left: 110px; z-index: 2;">
+            <img src="./mosaicos/diag.png">
+            <button class="rotation-btn">↻</button>
+        </div>
+        <div class="image group-4" style="top: 281px; left: 100px; z-index: 2;">
+            <img src="./mosaicos/diag.png">
+            <button class="rotation-btn">↻</button>
+        </div>
+        <div class="image group-4" style="top: 293px; left: 110px; z-index: 2;">
+            <img src="./mosaicos/diag.png">
+            <button class="rotation-btn">↻</button>
+        </div>
+            <!-- Stack Group 5 -->
+            <div class="image group-5" style="top: 449px; left: 100px;">
+                <img src="./mosaicos/l.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+            <div class="image group-5" style="top: 467px; left: 110px;">
+                <img src="./mosaicos/l.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+            <div class="image group-5" style="top: 449px; left: 100px;">
+                <img src="./mosaicos/l.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+            <div class="image group-5" style="top: 467px; left: 110px;">
+                <img src="./mosaicos/l.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+            <div class="image group-5" style="top: 449px; left: 100px;">
+                <img src="./mosaicos/l.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+            <div class="image group-5" style="top: 467px; left: 110px;">
+                <img src="./mosaicos/l.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+            <div class="image group-5" style="top: 449px; left: 100px;">
+                <img src="./mosaicos/l.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+            <div class="image group-5" style="top: 467px; left: 110px;">
+                <img src="./mosaicos/l.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+              <!-- Stack Group 6 -->
+              <div class="image group-6" style="top: 449px; left: 309px;">
+                <img src="./mosaicos/x.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+            <div class="image group-6" style="top: 467px; left: 319px;">
+                <img src="./mosaicos/x.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+            <div class="image group-6" style="top: 449px; left: 309px;">
+                <img src="./mosaicos/x.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+            <div class="image group-6" style="top: 467px; left: 319px;">
+                <img src="./mosaicos/x.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+            <div class="image group-6" style="top: 449px; left: 309px;">
+                <img src="./mosaicos/x.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+            <div class="image group-6" style="top: 467px; left: 319px;">
+                <img src="./mosaicos/x.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+            <div class="image group-6" style="top: 449px; left: 309px;">
+                <img src="./mosaicos/x.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+            <div class="image group-6" style="top: 467px; left: 319px;">
+                <img src="./mosaicos/x.png">
+                <button class="rotation-btn">↻</button>
+            </div>
+    </div>
+
+    <div class="linkContainer">
+        <a class="link" href="./a10.html">
+            <img src="./mosaicos/botao.png" width="11%" alt="próximo">
+        </a>
+        <a class="link" href="./b0.html">
+            <img src="./mosaicos/botao.png" width="11%" alt="próximo">
+        </a>
+    </div>
+    <script>
+        let zIndexCounter = 10;
+        let currentDraggedImage = null;
+        let offsetX = 0;
+        let offsetY = 0;
+        
+        function checkMagnetism(image) {
+            const proximityThreshold = 30;
+            const imageRect = image.getBoundingClientRect();
+            const fixedImageRect = document.querySelector('.fixed-image img').getBoundingClientRect();
+        
+            document.querySelectorAll('.magnetic-point').forEach(point => {
+                const magnetX = fixedImageRect.left + parseInt(point.getAttribute('data-x'));
+                const magnetY = fixedImageRect.top + parseInt(point.getAttribute('data-y'));
+        
+                const distance = Math.sqrt(
+                    Math.pow(imageRect.left - magnetX, 2) +
+                    Math.pow(imageRect.top - magnetY, 2)
+                );
+        
+                if (distance < proximityThreshold) {
+                    image.style.left = magnetX + 'px';
+                    image.style.top = magnetY + 'px';
+                }
+            });
+        }
+        
+        function onMouseMove(e) {
+            if (!currentDraggedImage) return;
+        
+            const posX = e.clientX - offsetX;
+            const posY = e.clientY - offsetY;
+        
+            currentDraggedImage.style.left = posX + 'px';
+            currentDraggedImage.style.top = posY + 'px';
+        
+            checkMagnetism(currentDraggedImage);
+        }
+        
+        function onMouseUp() {
+            if (!currentDraggedImage) return;
+            checkMagnetism(currentDraggedImage);
+            currentDraggedImage = null;
+            window.removeEventListener('mousemove', onMouseMove);
+            window.removeEventListener('mouseup', onMouseUp);
+        }
+        
+        document.querySelectorAll('.image').forEach(img => {
+            img.style.position = 'absolute';
+            img.classList.add('rotatable');
+        
+            img.addEventListener('mousedown', function (event) {
+                if (event.button !== 0) return;
+                event.preventDefault();
+        
+                currentDraggedImage = event.currentTarget;
+                const rect = currentDraggedImage.getBoundingClientRect();
+        
+                offsetX = event.clientX - rect.left;
+                offsetY = event.clientY - rect.top;
+        
+                currentDraggedImage.style.zIndex = ++zIndexCounter;
+        
+                window.addEventListener('mousemove', onMouseMove);
+                window.addEventListener('mouseup', onMouseUp);
+            });
+        
+            const rotationBtn = img.querySelector('.rotation-btn');
+            let rotationAngle = 0;
+            rotationBtn.addEventListener('click', () => {
+                rotationAngle += 90;
+                img.style.transform = `rotate(${rotationAngle}deg)`;
+            });
+        });
+        </script>        
+</body>
+</html>
